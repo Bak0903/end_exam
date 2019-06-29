@@ -1,5 +1,5 @@
 from django import forms
-from webapp.models import Author
+from webapp.models import Author, Book
 
 
 class AuthorForm(forms.ModelForm):
@@ -17,4 +17,25 @@ class AuthorForm(forms.ModelForm):
             'biography': forms.Textarea(
                 attrs={'class': 'form-control form-control-sm shadow-none',
                        'placeholder': 'Биография'}),
+        }
+
+
+class BookForm(forms.ModelForm):
+    author = forms.ChoiceField
+
+    class Meta:
+        model = Book
+        exclude = ['is_deleted']
+        widgets = {
+            'name': forms.TextInput(
+                attrs={'class': 'form-control form-control-sm shadow-none is-valid',
+                       'placeholder': 'Название', 'required': True}),
+            'published_year': forms.TextInput(
+                attrs={'class': 'form-control form-control-sm shadow-none',
+                       'placeholder': 'Год издания'}),
+            'file': forms.FileInput(),
+            'picture': forms.FileInput(),
+            'description': forms.Textarea(
+                attrs={'class': 'form-control form-control-sm shadow-none',
+                       'placeholder': 'Описание'}),
         }
