@@ -17,6 +17,11 @@
                 </span>
             </p>
         </div>
+        <div>
+            {% for book in books %}
+                {% include 'book/books.html' %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 {% block scripts %}
