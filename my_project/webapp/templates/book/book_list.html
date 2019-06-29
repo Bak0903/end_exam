@@ -9,21 +9,7 @@
                 </a>
             {% endif %}
         {% for book in book_list %}
-            <div class="border-bottom pb-2 mb-2 pb-2">
-                <a role="button" class="text-decoration-none text-dark font-weight-bold"
-                   href="{% url 'webapp:book' book.pk %}">
-                    <h5 class="text-wrap d-block mb-0 font-weight-bold">{{ forloop.counter }}. {{ book.name }}
-                    ({{ book.published_year }})</h5>
-                </a>
-                {% if user.is_staff %}
-                    <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
-                       href="{% url 'webapp:update_book' book.pk %}"><span
-                            class="small border-bottom border-warning pb-1">Редактировать</span></a>
-                    <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
-                       href="{% url 'webapp:delete_book' book.pk %}"><span
-                            class="small border-bottom border-warning pb-1">Удалить</span></a>
-                {% endif %}
-            </div>
+            {% include 'book/books.html' %}
         {% endfor %}
     </div>
 {% endblock %}
