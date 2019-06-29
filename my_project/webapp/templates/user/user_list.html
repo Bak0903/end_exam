@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Список пользователей{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2 class="font-weight-bold border-bottom pb-2">Список книг</h2>
+        {% for user in user_list %}
+            <div class="border-bottom pb-2 mb-2 pb-2">
+                <a role="button" class="text-decoration-none text-dark font-weight-bold"
+                   href="{% url 'webapp:user_detail' user.pk %}">
+                    <h5 class="text-wrap d-block mb-0 font-weight-bold">{{ forloop.counter }}. {{ user.username }}</h5>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,10 +1,14 @@
 from django.urls import path
 from webapp.views.author import AuthorListView, AuthorDetailView, AuthorCreateView, AuthorUpdateView, delete_author
 from webapp.views.book import BookListView, BookDetailView, BookCreateView, BookUpdateView, delete_book, download_file
+from webapp.views.user import UserView, UserListView
 
 app_name = 'webapp'
 
 urlpatterns = [
+    path('user/<int:pk>/', UserView.as_view(), name = 'user_detail'),
+    path('users/', UserListView.as_view(), name='users'),
+
     path('authors/', AuthorListView.as_view(), name='authors'),
     path('author/<int:pk>', AuthorDetailView.as_view(), name='author'),
     path('author/create/', AuthorCreateView.as_view(), name='create_author'),

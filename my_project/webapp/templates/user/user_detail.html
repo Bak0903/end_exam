@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Пользователь{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="border-bottom pb-2 pb-3 mb-2">
+            <h2 class="text-nowrap d-block mb-0 font-weight-bold">{{ user.username }}</h2>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Имя:
+                <span class="font-weight-bold">
+                    {% if user.first_name or user.last_name %}
+                        {{ user.first_name }} {{ user.last_name }}
+                    {% else %} не указано {% endif %}
+                </span>
+            </p>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Почта:
+                <span class="font-weight-bold">
+                    {% if user.email %} {{ user.email }} {% else %} не указано {% endif %}
+                </span>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}
