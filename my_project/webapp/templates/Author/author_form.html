@@ -1,0 +1,37 @@
+<div class="form-group row was-validated">
+    <label for="id_name" class="col-sm-2 col-form-label col-form-label-sm">Секция</label>
+    <div class="col-sm-6">
+        {{ form.name }}
+        {% for error in form.name.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+        <small class="form-text text-muted">Обязательное поле</small>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="id_code_category" class="col-sm-2 col-form-label col-form-label-sm">Дата рождения</label>
+    <div class="col-sm-6">
+        {{ form.birth_date }}
+        {% for error in form.birh_date.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="form-group row">
+    <label for="id_code_category" class="col-sm-2 col-form-label col-form-label-sm">Дата смерти</label>
+    <div class="col-sm-6">
+        {{ form.death_date }}
+        {% for error in form.death_date.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="form-group row">
+    <label for="id_code_category" class="col-sm-2 col-form-label col-form-label-sm">Биография</label>
+    <div class="col-sm-6">
+        {{ form.biography }}
+        {% for error in form.biography.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+    </div>
+</div>

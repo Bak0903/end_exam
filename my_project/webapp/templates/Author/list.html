@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Список авторов{% endblock %}
+{% block content %}
+    <div class="container">
+        <div>
+            <h2 class="font-weight-bold border-bottom pb-2">Список авторов</h2>
+            <a role="button" class="btn btn-warning m-0 btn-sm" href="{% url 'webapp:create_author' %}">
+                <span class="text-decoration-none text-dark">Добавить автора</span>
+            </a>
+            {% for author in author_list %}
+                    <div class="border-bottom pb-2 mb-2 pb-2">
+                        <a role="button" class="text-decoration-none text-dark font-weight-bold"
+                           href="{% url 'webapp:author' author.pk %}">
+                            <h5 class="text-wrap d-block mb-0 font-weight-bold">{{ forloop.counter }}. {{ author.name }}</h5>
+                        </a>
+                        <a class="text-decoration-none text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
+                           href="{% url 'webapp:update_author' author.pk %}"><span
+                                class="small border-bottom border-warning pb-1">Редактировать</span></a>
+                        <a class="text-decoration-none text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
+                           href="{% url 'webapp:delete_author' author.pk %}"><span
+                                class="small border-bottom border-warning pb-1">Удалить</span></a>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
