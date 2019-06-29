@@ -44,8 +44,8 @@ class Book(models.Model):
 
 
 class Bookcase(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Полка пользователь')
-    book = models.ForeignKey('Book', on_delete=models.CASCADE, verbose_name='Книга на полке')
+    user = models.ForeignKey(User, related_name='user_bookcase', on_delete=models.CASCADE, verbose_name='Полка пользователь')
+    book = models.ForeignKey('Book', related_name='book_bookcase', on_delete=models.CASCADE, verbose_name='Книга на полке')
 
     def __str__(self):
         return "Полка %s. Книга: %s" % (self.user.username, self.book.name)
