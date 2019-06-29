@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from webapp.models import Author, Book
+from webapp.models import Author, Book, Comment
 from webapp.forms import BookForm
 
 
@@ -22,6 +22,11 @@ class BookDetailView(DetailView):
 
     def get_queryset(self):
         return Book.objects.active()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = Comment.objects.filter(book_id=self.object.pk).order_by('-created_date')
+        return context
 
 
 class BookCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
