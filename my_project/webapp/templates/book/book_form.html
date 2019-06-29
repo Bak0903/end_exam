@@ -1,0 +1,56 @@
+<div class="form-group row was-validated">
+    <label for="id_name" class="col-sm-2 col-form-label col-form-label-sm">Название</label>
+    <div class="col-sm-6">
+        {{ form.name }}
+        {% for error in form.name.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+        <small class="form-text text-muted">Обязательное поле</small>
+    </div>
+</div>
+<div class="form-group row was-validated">
+    <label for="id_name" class="col-sm-2 col-form-label col-form-label-sm">Секция</label>
+    <div class="col-sm-6">
+        {{ form.author }}
+        {% for error in form.author.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+        <small class="form-text text-muted">Обязательное поле</small>
+    </div>
+</div>
+<div class="form-group row">
+    <label for="id_code_category" class="col-sm-2 col-form-label col-form-label-sm">Год издания</label>
+    <div class="col-sm-6">
+        {{ form.published_year }}
+        {% for error in form.published_year.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="form-group row">
+    <label for="id_code_category" class="col-sm-2 col-form-label col-form-label-sm">Описание</label>
+    <div class="col-sm-6">
+        {{ form.description }}
+        {% for error in form.description.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="form-group row">
+    <label for="id_code_category" class="col-sm-2 col-form-label col-form-label-sm">Файл</label>
+    <div class="col-sm-6">
+        {{ form.file }}
+        {% for error in form.file.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="form-group row">
+    <label for="id_code_category" class="col-sm-2 col-form-label col-form-label-sm">Обложка</label>
+    <div class="col-sm-6">
+        {{ form.picture }}
+        {% for error in form.picture.errors %}
+            <p class="font-weight-light text-danger d-block small text-center pb-0 mb-0">{{ error }}</p>
+        {% endfor %}
+    </div>
+</div>

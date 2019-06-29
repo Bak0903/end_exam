@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Автор{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="border-bottom pb-2 pb-3 mb-2">
+            <h2 class="text-nowrap d-block mb-0 font-weight-bold">{{ book.name }}</h2>
+            {% if book.picture %}
+                <img src="{{ book.picture.url }}" alt="Обложка">
+            {% endif %}
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Автор:
+                <span class="font-weight-bold">
+                    {% if book.author %} {{ book.author.name }} {% else %} Не указан {% endif %}
+                </span>
+            </p>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Год издания:
+                <span class="font-weight-bold">
+                    {% if book.published_year %} {{ book.published_year }} {% else %} Не указан {% endif %}
+                </span>
+            </p>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Описание:
+                <span class="font-weight-bold">
+                    {% if book.description %} {{ book.description }} {% else %} Нет {% endif %}
+                </span>
+            </p>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Файл:
+                <span class="font-weight-bold">
+                    {% if book.file %}
+                        {{ book.file }}
+                        <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
+                           href="{% url 'webapp:download' book.pk %}"><span
+                                class="small border-bottom border-warning pb-1">Скачать</span></a>
+                    {% else %} Нет {% endif %}
+                </span>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}
