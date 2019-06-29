@@ -6,7 +6,7 @@
         <div>
             <h2 class="font-weight-bold border-bottom pb-2">Список авторов</h2>
             {% if user.is_staff %}
-                <a role="button" class="btn btn-warning m-0 btn-sm" href="{% url 'webapp:create_author' %}">
+                <a role="button" class="btn btn-warning m-0 btn-sm m-3" href="{% url 'webapp:create_author' %}">
                     <span class="text-decoration-none text-dark">Добавить автора</span>
                 </a>
             {% endif %}
