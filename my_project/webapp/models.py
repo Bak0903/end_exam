@@ -33,6 +33,8 @@ class Book(models.Model):
     file = models.FileField(null=True, blank=True, verbose_name='Файл')
     picture = models.ImageField(null=True, blank=True, verbose_name='Обложка')
     description = models.TextField(null=True, blank=True, max_length=2000, verbose_name='Описание')
+    is_deleted = models.BooleanField(default=False)
+    objects = SoftDeleteManager()
 
     def __str__(self):
         return "%s (%s)" % (self.name, self.published_year)
