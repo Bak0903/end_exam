@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.conf import settings
+from django.contrib.auth.models import User
 
 
 class SoftDeleteManager(models.Manager):
@@ -41,3 +41,11 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         return reverse('webapp:book', kwargs={'pk': self.pk})
+
+
+class Bookcase(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Полка пользователь')
+    book = models.ForeignKey('Book', on_delete=models.CASCADE, verbose_name='Книга на полке')
+
+    def __str__(self):
+        return "Полка %s. Книга: %s" % (self.user.username, self.book.name)
