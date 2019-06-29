@@ -57,11 +57,12 @@ class BookUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
 
 def delete_book(request, book_pk):
+    print(book_pk)
     book = get_object_or_404(Book, pk=book_pk)
     if request.user.is_staff:
         book.is_deleted = True
         book.save()
-    return redirect('webapp:author', pk=book.author.pk)
+    return redirect('webapp:books')
 
 
 def download_file(request, book_pk):

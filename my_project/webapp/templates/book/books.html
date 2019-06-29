@@ -7,20 +7,21 @@
     {% if user.is_staff %}
         <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
            href="{% url 'webapp:update_book' book.pk %}">
-           <span class="small border-bottom border-warning pb-1">Редактировать</span></a>
+           <span class="small border-bottom border-warning pb-1 font-weight-bold">Редактировать</span></a>
         <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1">
             <span
-                id = "delete_item"
+                id = "delete_btn_{{ book.pk }}"
                 data-toggle="modal"
                 data-target="#delete_item"
                 data-url="{% url 'webapp:delete_book' book.pk %}"
+                class="delete_item small border-bottom border-warning pb-1 font-weight-bold"
             >Удалить
             </span>
         </a>
     {% endif %}
     {% if user.is_authenticated %}
         <form id="add-form-{{ book.pk }}" method="get"
-            action="{% url 'webapp:add_to_bookcase' book.pk %}">
+            action="{% url 'webapp:add_to_bookcase' book.pk %}" class="d-inline-block">
             {% csrf_token %}
             <div
                 class="add_to_bookcase text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
@@ -29,7 +30,7 @@
            <span class="small border-bottom border-warning pb-1">Добавить к себе</span></div>
         </form>
         <form id="remove-form-{{ book.pk }}" method="get"
-            action="{% url 'webapp:remove_from_bookcase' book.pk %}">
+            action="{% url 'webapp:remove_from_bookcase' book.pk %}" class="d-inline-block">
             {% csrf_token %}
             <div
                 class="remove_from_bookcase text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"

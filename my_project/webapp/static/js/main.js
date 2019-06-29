@@ -24,8 +24,8 @@ $(document).on('click', '.remove_from_bookcase', function () {
     });
 });
 
-window.onload = () => {
-    let url = $('#delete_item').data('url');
+$(document).on('click', '.delete_item', function () {
+    let url = $(this).data('url');
     let modal = $('#confirm_delete');
     modal.attr('href', url);
-    };
+});
