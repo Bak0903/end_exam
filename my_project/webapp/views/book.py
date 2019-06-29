@@ -8,6 +8,14 @@ from webapp.models import Author, Book
 from webapp.forms import BookForm
 
 
+class BookListView(ListView):
+    model = Book
+    template_name = 'book/book_list.html'
+
+    def get_queryset(self):
+        return Book.objects.active()
+
+
 class BookDetailView(DetailView):
     model = Author
     template_name = 'book/book_detail.html'

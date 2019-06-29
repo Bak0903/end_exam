@@ -126,5 +126,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
 
 LOGIN_URL = reverse_lazy('login')
-LOGIN_REDIRECT_URL = reverse_lazy('webapp:base')
+LOGIN_REDIRECT_URL = reverse_lazy('webapp:books')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
