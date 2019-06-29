@@ -17,6 +17,8 @@
             >Удалить
             </span>
         </a>
+    {% endif %}
+    {% if user.is_authenticated %}
         <form id="add-form-{{ book.pk }}" method="get"
             action="{% url 'webapp:add_to_bookcase' book.pk %}">
             {% csrf_token %}
