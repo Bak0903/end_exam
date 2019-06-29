@@ -2,6 +2,7 @@ from django.urls import path
 from webapp.views.author import AuthorListView, AuthorDetailView, AuthorCreateView, AuthorUpdateView, delete_author
 from webapp.views.book import BookListView, BookDetailView, BookCreateView, BookUpdateView, delete_book, download_file
 from webapp.views.user import UserView, UserListView, add_to_bookcase, remove_from_bookcase
+from webapp.views.comment import comment
 
 app_name = 'webapp'
 
@@ -24,5 +25,7 @@ urlpatterns = [
 
 
     path('add/to/bookcase/<int:book_pk>', add_to_bookcase, name='add_to_bookcase'),
-    path('remove/from/bookcase/<int:book_pk>', remove_from_bookcase, name='remove_from_bookcase')
+    path('remove/from/bookcase/<int:book_pk>', remove_from_bookcase, name='remove_from_bookcase'),
+
+    path('book/comment/create/', comment, name='create_comment'),
 ]
