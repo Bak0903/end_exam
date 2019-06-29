@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Автор{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="border-bottom pb-2 pb-3 mb-2">
+            <h2 class="text-nowrap d-block mb-0 font-weight-bold">{{ author.name }}</h2>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Дата рождения:
+                <span class="font-weight-bold">
+                    {% if author.birth_date %} {{ author.birth_date }} {% else %} Не указана {% endif %}
+                </span>
+            </p>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Дата смерти:
+                <span class="font-weight-bold">
+                    {% if author.death_date %} {{ author.death_date }} {% else %} Не указана {% endif %}
+                </span>
+            </p>
+            <p class="d-block pb-0 mb-0 mt-1 ml-3">Биография:
+                <span class="font-weight-bold">
+                    {% if author.biography %} {{ author.biography }} {% else %} Не указана {% endif %}
+                </span>
+            </p>
+        </div>
+
+        <div>
+            {% for book in books %}
+                <div class="border-bottom pb-2 mb-2 pb-2">
+                    <a role="button" class="text-decoration-none text-dark font-weight-bold"
+                       href="{% url 'webapp:book' book.pk %}">
+                        <h5 class="text-wrap d-block mb-0 font-weight-bold">{{ forloop.counter }}. {{ book.name }}
+                        ({{ book.published_year }})</h5>
+                    </a>
+                    {% if user.is_staff %}
+                        <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
+                           href="{% url 'webapp:update_book' book.pk %}"><span
+                                class="small border-bottom border-warning pb-1">Редактировать</span></a>
+                        <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
+                           href="{% url 'webapp:delete_book' book.pk %}"><span
+                                class="small border-bottom border-warning pb-1">Удалить</span></a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -3,9 +3,9 @@
 {% block content %}
     <div class="container">
         <h2 class="text-center">Добавление автора</h2>
-        <form action="{% url 'webapp:create_author' %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'webapp:update_author' form.instance.pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {% include 'Author/author_form.html' %}
+            {% include 'author/author_form.html' %}
             <button type="submit" class="btn btn-success m-2">Сохранить</button>
             <a role="button" class="btn btn-primary m-2" href="{% url 'webapp:authors' %}">Назад</a>
         </form>
