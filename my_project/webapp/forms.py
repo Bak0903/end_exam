@@ -1,5 +1,5 @@
 from django import forms
-from webapp.models import Author, Book
+from webapp.models import Author, Book, Comment
 
 
 class AuthorForm(forms.ModelForm):

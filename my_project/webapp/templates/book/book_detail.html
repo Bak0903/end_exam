@@ -7,23 +7,23 @@
             {% if book.picture %}
                 <img src="{{ book.picture.url }}" alt="Обложка">
             {% endif %}
-            <p class="d-block pb-0 mb-0 mt-1 ml-3">Автор:
-                <span class="font-weight-bold">
+            <p class="d-block pb-0 mb-0 mt-1 ml-3 font-weight-bold">Автор:
+                <span class="font-weight-light">
                     {% if book.author %} {{ book.author.name }} {% else %} Не указан {% endif %}
                 </span>
             </p>
-            <p class="d-block pb-0 mb-0 mt-1 ml-3">Год издания:
-                <span class="font-weight-bold">
+            <p class="d-block pb-0 mb-0 mt-1 ml-3 font-weight-bold">Год издания:
+                <span class="font-weight-light">
                     {% if book.published_year %} {{ book.published_year }} {% else %} Не указан {% endif %}
                 </span>
             </p>
-            <p class="d-block pb-0 mb-0 mt-1 ml-3">Описание:
-                <span class="font-weight-bold">
+            <p class="d-block pb-0 mb-0 mt-1 ml-3 font-weight-bold">Описание:
+                <span class="font-weight-light">
                     {% if book.description %} {{ book.description }} {% else %} Нет {% endif %}
                 </span>
             </p>
-            <p class="d-block pb-0 mb-0 mt-1 ml-3">Файл:
-                <span class="font-weight-bold">
+            <p class="d-block pb-0 mb-0 mt-1 ml-3 font-weight-bold">Файл:
+                <span class="font-weight-light">
                     {% if book.file %}
                         {{ book.file }}
                         <a class="text-decoration-none text-dark d-inline-block pb-0 mb-0 font-weight-light ml-3 mt-1"
@@ -32,8 +32,28 @@
                     {% else %} Нет {% endif %}
                 </span>
             </p>
+        {% if user.is_authenticated %}
+        <div class="input-group mt-5 mb-5">
+            <form action="{% url 'webapp:create_comment' %}" method="post" enctype="multipart/form-data" class="text-center col-12">
+                {% csrf_token %}
+                <input type="hidden" name="book_id" value="{{ book.pk }}">
+                <label id="text" class="col-12 m-2">Добавить отзыв</label>
+                <textarea class="form-control col-11 m-auto" name="text" rows=4></textarea>
+                <button type="submit" class="btn btn-success m-2">Отправить</button>
+            </form>
         </div>
-    </div>
+        {% endif %}
+        </div>
+        {% for comment in comments %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">Автор: {{ comment.user.username }}</h5>
+                    <p class="card-text">Текст: {{ comment.text }}</p>
+                    <p class="card-link">Дата: {{ comment.created_date }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
 {% endblock %}
 {% block scripts %}
 {% endblock %}
